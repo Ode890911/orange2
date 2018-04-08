@@ -49,8 +49,7 @@ public class DashBoardPage extends BasePage{
 			return this;
 		}
 		
-		
-		
+				
 		public DashBoardPage Legend(){
 			
 			WebElement legend = driver.findElement(By.id("div_legend_pim_employee_distribution_legend"));
@@ -77,13 +76,23 @@ public class DashBoardPage extends BasePage{
 			WebElement EmployeeList= driver.findElement(By.xpath("//*[@id='menu_pim_viewEmployeeList']"));
 			action.moveToElement(EmployeeList).perform();
 			EmployeeList.click();
-			Thread.sleep(2000);
-				
-			
+			Thread.sleep(1000);						
 			
 			return new PIMPage();
 		
 		}
+		public recruitPage GoToRecruitPage() throws InterruptedException {
+			Actions action = new Actions(driver);
+			
+			WebElement RecSection= driver.findElement(By.id("menu_recruitment_viewRecruitmentModule"));
+			action.moveToElement(RecSection).perform();
+			Thread.sleep(1000);						
+			
+			return new recruitPage();
+		
+		}
+
+
 
 
 

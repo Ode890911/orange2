@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="18486" started-at="2018-04-08T21:06:35Z" finished-at="2018-04-08T21:06:53Z">
+  <suite name="Default suite" duration-ms="20538" started-at="2018-04-08T22:22:57Z" finished-at="2018-04-08T22:23:17Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="18486" started-at="2018-04-08T21:06:35Z" finished-at="2018-04-08T21:06:53Z">
+    <test name="Default test" duration-ms="20538" started-at="2018-04-08T22:22:57Z" finished-at="2018-04-08T22:23:17Z">
       <class name="tests.OrangeTest">
-        <test-method status="PASS" signature="beforeAllTestStart()[pri:0, instance:tests.OrangeTest@31610302]" name="beforeAllTestStart" is-config="true" duration-ms="13" started-at="2018-04-08T17:06:35Z" finished-at="2018-04-08T17:06:35Z">
+        <test-method status="PASS" signature="beforeAllTestStart()[pri:0, instance:tests.OrangeTest@31610302]" name="beforeAllTestStart" is-config="true" duration-ms="14" started-at="2018-04-08T18:22:57Z" finished-at="2018-04-08T18:22:57Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeAllTestStart -->
-        <test-method status="PASS" signature="beforeEachTestStart()[pri:0, instance:tests.OrangeTest@31610302]" name="beforeEachTestStart" is-config="true" duration-ms="5732" started-at="2018-04-08T17:06:35Z" finished-at="2018-04-08T17:06:40Z">
+        <test-method status="PASS" signature="beforeEachTestStart()[pri:0, instance:tests.OrangeTest@31610302]" name="beforeEachTestStart" is-config="true" duration-ms="6738" started-at="2018-04-08T18:22:57Z" finished-at="2018-04-08T18:23:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeEachTestStart -->
-        <test-method status="PASS" signature="OrangeWebsiteTests()[pri:0, instance:tests.OrangeTest@31610302]" name="OrangeWebsiteTests" duration-ms="7036" started-at="2018-04-08T17:06:40Z" finished-at="2018-04-08T17:06:47Z">
+        <test-method status="PASS" signature="OrangeWebsiteTests()[pri:0, instance:tests.OrangeTest@31610302]" name="OrangeWebsiteTests" duration-ms="8114" started-at="2018-04-08T18:23:04Z" finished-at="2018-04-08T18:23:12Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- OrangeWebsiteTests -->
-        <test-method status="PASS" signature="afterEachTestComplete(org.testng.ITestResult)[pri:0, instance:tests.OrangeTest@31610302]" name="afterEachTestComplete" is-config="true" duration-ms="5105" started-at="2018-04-08T17:06:47Z" finished-at="2018-04-08T17:06:52Z">
+        <test-method status="PASS" signature="afterEachTestComplete(org.testng.ITestResult)[pri:0, instance:tests.OrangeTest@31610302]" name="afterEachTestComplete" is-config="true" duration-ms="5063" started-at="2018-04-08T18:23:12Z" finished-at="2018-04-08T18:23:17Z">
           <params>
             <param index="0">
               <value>
@@ -30,7 +30,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterEachTestComplete -->
-        <test-method status="PASS" signature="afterAllTestsComplete()[pri:0, instance:tests.OrangeTest@31610302]" name="afterAllTestsComplete" is-config="true" duration-ms="577" started-at="2018-04-08T17:06:52Z" finished-at="2018-04-08T17:06:53Z">
+        <test-method status="PASS" signature="afterAllTestsComplete()[pri:0, instance:tests.OrangeTest@31610302]" name="afterAllTestsComplete" is-config="true" duration-ms="589" started-at="2018-04-08T18:23:17Z" finished-at="2018-04-08T18:23:17Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterAllTestsComplete -->
