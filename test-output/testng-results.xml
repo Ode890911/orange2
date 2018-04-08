@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="18486" started-at="2018-04-08T21:06:35Z" finished-at="2018-04-08T21:06:53Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="18486" started-at="2018-04-08T21:06:35Z" finished-at="2018-04-08T21:06:53Z">
+      <class name="tests.OrangeTest">
+        <test-method status="PASS" signature="beforeAllTestStart()[pri:0, instance:tests.OrangeTest@31610302]" name="beforeAllTestStart" is-config="true" duration-ms="13" started-at="2018-04-08T17:06:35Z" finished-at="2018-04-08T17:06:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeAllTestStart -->
+        <test-method status="PASS" signature="beforeEachTestStart()[pri:0, instance:tests.OrangeTest@31610302]" name="beforeEachTestStart" is-config="true" duration-ms="5732" started-at="2018-04-08T17:06:35Z" finished-at="2018-04-08T17:06:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeEachTestStart -->
+        <test-method status="PASS" signature="OrangeWebsiteTests()[pri:0, instance:tests.OrangeTest@31610302]" name="OrangeWebsiteTests" duration-ms="7036" started-at="2018-04-08T17:06:40Z" finished-at="2018-04-08T17:06:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- OrangeWebsiteTests -->
+        <test-method status="PASS" signature="afterEachTestComplete(org.testng.ITestResult)[pri:0, instance:tests.OrangeTest@31610302]" name="afterEachTestComplete" is-config="true" duration-ms="5105" started-at="2018-04-08T17:06:47Z" finished-at="2018-04-08T17:06:52Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=OrangeWebsiteTests status=SUCCESS method=OrangeTest.OrangeWebsiteTests()[pri:0, instance:tests.OrangeTest@31610302] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTestComplete -->
+        <test-method status="PASS" signature="afterAllTestsComplete()[pri:0, instance:tests.OrangeTest@31610302]" name="afterAllTestsComplete" is-config="true" duration-ms="577" started-at="2018-04-08T17:06:52Z" finished-at="2018-04-08T17:06:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterAllTestsComplete -->
+      </class> <!-- tests.OrangeTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
