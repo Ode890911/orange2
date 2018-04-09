@@ -21,6 +21,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.internal.WrapsDriver;
@@ -99,6 +102,25 @@ public class GlobalSeleniumLibrary {
 		try {
 			System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
 			driver = new FirefoxDriver();
+			
+			/*ProfilesIni profile = new ProfilesIni();
+			FirefoxProfile myprofile = profile. getProfile("OdeKouame");
+			//WebDriver driver = new FirefoxDriver(myprofile);
+*/			
+			/*FirefoxOptions options = new FirefoxOptions();
+		    options.setProfile.("Ode.Kouame"));
+		    FirefoxDriver driver = new FirefoxDriver(options);*/
+		    
+		   /* ProfilesIni profile2 = new ProfilesIni();
+	        FirefoxProfile profile3 = profile2.getProfile("OdeKouame");
+	        profile3.setPreference("browser.popups.showPopupBlocker", false);
+
+	        FirefoxOptions firefoxOptions = new FirefoxOptions();
+	        firefoxOptions.setProfile(profile3);
+
+	        WebDriver driver = new FirefoxDriver(firefoxOptions);	 */       
+
+			
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 			driver.manage().window().maximize();

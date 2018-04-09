@@ -91,6 +91,21 @@ public class DashBoardPage extends BasePage{
 			return new recruitPage();
 		
 		}
+		
+
+public TimePage GoToTimetPage() throws InterruptedException {
+	Actions action = new Actions(driver);
+	
+	WebElement TimeSection= driver.findElement(By.id("menu_time_viewTimeModule"));
+	action.moveToElement(TimeSection).perform();
+	Thread.sleep(1000);						
+	
+	return new TimePage();
+
+}
+
+
+
 
 
 
