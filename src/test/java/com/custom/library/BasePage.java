@@ -1,5 +1,8 @@
 package com.custom.library;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
@@ -10,17 +13,19 @@ import org.testng.annotations.BeforeMethod;
 
 public class BasePage {
 	final static Logger logger = Logger.getLogger(BasePage.class);
-	
+	//declare all the variable
 	public static WebDriver driver;
 	public static GlobalSeleniumLibrary myLib;
 	private static JavaPropertiesManager configProperty;
+	private static JavaPropertiesManager property2;
 	private static String browser;
+	private static String isAutoEmail;
 	private static boolean isRemoteRun; //was true
 
 	@BeforeMethod
 	public void beforeEachTestStart() throws Exception {
 		
-		if(isRemoteRun)
+		if(isRemoteRun == true)
 		{
 			driver = myLib.startRemoteBrowser("http://192.168.1.161:4857/wd/hub/", browser);
 		}else{
@@ -52,6 +57,24 @@ public class BasePage {
 			//driver.close();
 			driver.quit();
 		}
+		// Sending all the reports, screenshots, and log files via email
+		List<String> screenshots = new ArrayList<>();
+		//initialise email manager and email sender
+		EmailManager emailSender = new EmailManager();
+		emailSender.attachmentFiles.add("extent.html");
+		emailSender.attachmentFiles.add("target/logs/log4j-selenium.log");
+		screenshots = myLib.automaticallyAttachErrorImgToEmail();//grab all the screenshot automatically
+		if(screenshots.size() !=0)//no screenshot, test succesfull
+		{
+			for(String file: screenshots)
+			{
+				emailSender.attachmentFiles.add(file);
+			}
+		}		
+		if(isAutoEmail.contains("true"))//create another flag isautomail
+		{
+			emailSender.sendEmail(screenshots);
+		}	
 	}
 
 	@BeforeClass
@@ -59,7 +82,12 @@ public class BasePage {
 		
 		configProperty = new JavaPropertiesManager("src/test/resources/config.properties");
 		browser = configProperty.readProperty("browserType");
+		isAutoEmail = configProperty.readProperty("isAutoSendEmail");
 		myLib = new GlobalSeleniumLibrary(driver);
+		property2 = new JavaPropertiesManager("src/test/resources/dynamicConfig.properties");//write timestamp to file before text start
+		//add it to the properfile
+		property2.setProperty("sessionTime",myLib.getCurrentTime());
+		
 		if(configProperty.readProperty("demoMode").contains("true")){
 			myLib.isDemoMode = true;
 			System.out.println("Test is running Demo mode = ON ...");

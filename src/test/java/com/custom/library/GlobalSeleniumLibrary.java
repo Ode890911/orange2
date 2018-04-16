@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -21,9 +23,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.internal.WrapsDriver;
@@ -51,6 +50,7 @@ public class GlobalSeleniumLibrary {
 	private WebDriver driver;
 	public boolean isDemoMode = false;
 	public boolean isRemote = false;
+	public List<String> errorScreenshots;// flag
 
 	/***
 	 * This is the constructor method
@@ -69,6 +69,7 @@ public class GlobalSeleniumLibrary {
 	public WebDriver startChromeBrowser() {
 		try {
 			System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+			//System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver-01062018.exe");
 			driver = new ChromeDriver(); // open Chrome browser
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
@@ -102,25 +103,6 @@ public class GlobalSeleniumLibrary {
 		try {
 			System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
 			driver = new FirefoxDriver();
-			
-			/*ProfilesIni profile = new ProfilesIni();
-			FirefoxProfile myprofile = profile. getProfile("OdeKouame");
-			//WebDriver driver = new FirefoxDriver(myprofile);
-*/			
-			/*FirefoxOptions options = new FirefoxOptions();
-		    options.setProfile.("Ode.Kouame"));
-		    FirefoxDriver driver = new FirefoxDriver(options);*/
-		    
-		   /* ProfilesIni profile2 = new ProfilesIni();
-	        FirefoxProfile profile3 = profile2.getProfile("OdeKouame");
-	        profile3.setPreference("browser.popups.showPopupBlocker", false);
-
-	        FirefoxOptions firefoxOptions = new FirefoxOptions();
-	        firefoxOptions.setProfile(profile3);
-
-	        WebDriver driver = new FirefoxDriver(firefoxOptions);	 */       
-
-			
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 			driver.manage().window().maximize();
@@ -481,8 +463,63 @@ public class GlobalSeleniumLibrary {
 		}
 	}
 	
-	
-	
+	public List<String> automaticallyAttachErrorImgToEmail() {
+		List<String> fileNames = new ArrayList<>();
+		JavaPropertiesManager propertyReader = new JavaPropertiesManager("src/test/resources/dynamicConfig.properties");
+		//when test stat, create timestamp that is stored in javaproperty file
+		//that method read the time stamp and replace some numbers
+		String tempTimeStamp = propertyReader.readProperty("sessionTime");
+		String numberTimeStamp = tempTimeStamp.replaceAll("_", "");
+		long testStartTime = Long.parseLong(numberTimeStamp);
+
+		// first check if error-screenshot folder has file
+		File file = new File("target/images");
+		if (file.isDirectory()) {
+			if (file.list().length > 0) {
+				File[] screenshotFiles = file.listFiles();
+				for (int i = 0; i < screenshotFiles.length; i++) {
+					// checking if file is a file, not a folder
+					if (screenshotFiles[i].isFile()) {
+						//get the file name
+						String eachFileName = screenshotFiles[i].getName();
+						//print file name
+						logger.info("Testing file names: " + eachFileName);
+						//extract only the number from the filename
+						//find index of 20 from that index extract only number portion of file name
+						//to compare the number
+						int indexOf20 = seachStringInString("20", eachFileName);//search year 20 in each file name with s
+						
+						String timeStampFromScreenshotFile = eachFileName.substring(indexOf20,
+								eachFileName.length() - 4);//extract without the extension .png
+						logger.info("Testing file timestamp: " + timeStampFromScreenshotFile);
+						String fileNumberStamp = timeStampFromScreenshotFile.replaceAll("_", "");
+						//convert the string to number
+						long screenshotfileTime = Long.parseLong(fileNumberStamp);
+
+						testStartTime = Long.parseLong(numberTimeStamp.substring(0, 14));
+						screenshotfileTime = Long.parseLong(fileNumberStamp.substring(0, 14));
+						if (screenshotfileTime > testStartTime) {
+						//each file name and folder location
+							fileNames.add("target/images/" + eachFileName);
+						}
+					}
+				}
+
+			}
+		}
+		errorScreenshots = fileNames;//assign to screenshot
+		return fileNames;
+	}
+//this method will search anything inside the paragraph and return the index of the target
+	//it will find the first one and get the index
+	public int seachStringInString(String target, String message) {
+		int targetIndex = 0;
+		for (int i = -1; (i = message.indexOf(target, i + 1)) != -1;) {
+			targetIndex = i;
+			break;
+		}
+		return targetIndex;
+	}
 	
 	
 	

@@ -25,7 +25,7 @@ public class ExcelManager {
 	private static XSSFRow Row;
 	private static String excelFile;
 
-	public ExcelManager(String excelFilePath) {
+	public ExcelManager(String excelFilePath) {//this is the constructor
 		excelFile = excelFilePath;
 	}
 
@@ -39,11 +39,11 @@ public class ExcelManager {
 			int totalNoOfCols = sh.getColumns();
 			int totalNoOfRows = sh.getRows();
 
-			arrayExcelData = new String[totalNoOfRows-1][totalNoOfCols];
+			arrayExcelData = new String[totalNoOfRows - 1][totalNoOfCols];
 
 			for (int i = 1; i < totalNoOfRows; i++) {
-				for (int j = 0; j < totalNoOfCols; j++) {//was "0"
-					arrayExcelData[i-1][j] = sh.getCell(j,i).getContents();//was [i-1]
+				for (int j = 0; j < totalNoOfCols; j++) {
+					arrayExcelData[i - 1][j] = sh.getCell(j, i).getContents();
 				}
 			}
 
@@ -99,8 +99,10 @@ public class ExcelManager {
 	}*/
 
 	public static void main(String[] args) {
-		ExcelManager myRead = new ExcelManager("src/test/resources/Username.xls");
-		System.out.println("Data results: " + myRead.getExcelData("Sheet1"));
+		//ExcelManager myRead = new ExcelManager("src/test/resources/testData.xls");
+		//System.out.println("Data results: " + myRead.getExcelData("Sheet1"));
+		System.out.println(getCellData(2, 2));
+		
 	}
 
 	
