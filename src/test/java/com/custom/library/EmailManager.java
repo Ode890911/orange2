@@ -53,8 +53,8 @@ public class EmailManager {
 		/*setToAddress("test0014524@gmail.com;musabaytechcorp@gmail.com");
 		sendEmail("smtp.gmail.com", "587", "qa.testing.811@gmail.com", "Muralim811", "Test Automation", emailMsgBody, attachments);
 		*/
-		setToAddress("odekouametester@gmail.com");
-		sendEmail("smtp.gmail.com", "587", "odekouametester@gmail.com", "shudelou07", "Test Automation", emailMsgBody, attachments);
+		setToAddress("ebilou0911@gmail.com");
+		sendEmail("smtp.gmail.com", "587", "ebilou0911@gmail.com", "Megron0911", "Test Automation", emailMsgBody, attachments);
 		
 
 	}
@@ -130,13 +130,13 @@ public class EmailManager {
 		}
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EmailManager emailSender = new EmailManager();
 		List<String> files = new ArrayList<>();
 		files.add("src/test/resources/screenshots/test1.png");
 		files.add("src/test/resources/screenshots/ticket_result_2017_12_02_09_53_34_908.png");
 		emailSender.sendEmail(files);
-	}
+	}*/
 	
 	
 }

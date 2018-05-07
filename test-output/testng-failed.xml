@@ -3,15 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="tests.OrangeTest">
+      <class name="pages.FreeCRMTest">
         <methods>
-          <include name="afterEachTestComplete"/>
-          <include name="OrangeWebsiteTests"/>
-          <include name="beforeEachTestStart"/>
-          <include name="afterAllTestsComplete"/>
-          <include name="beforeAllTestStart"/>
+          <include name="setup"/>
+          <include name="tearDown"/>
+          <include name="endReport"/>
+          <include name="freeCrmTitleTest"/>
+          <include name="setExtent"/>
+          <include name="freemCRMLogoTest"/>
         </methods>
-      </class> <!-- tests.OrangeTest -->
+      </class> <!-- pages.FreeCRMTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
